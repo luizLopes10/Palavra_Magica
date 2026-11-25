@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#38b8f0">
+    <meta name="description" content="Escolha a dificuldade, leia a pista e descubra a Palavra Mágica.">
+    <title>Palavra Mágica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="game.js"></script>
+  </head>
+  <body>
+    <main class="game">
+      <section class="screen home" id="home" aria-labelledby="home-title">
+        <div class="home-content">
+          <h1 class="scene-title" id="home-title" tabindex="-1">Palavra Mágica</h1>
+          <button class="play-button" id="play" type="button">Jogar</button>
+        </div>
+        <div class="letter-blocks" aria-hidden="true">
+          <span class="block block-a">A</span>
+          <span class="block block-b">B</span>
+          <span class="block block-c">C</span>
+        </div>
+      </section>
+
+      <section class="screen levels" id="levels" aria-labelledby="levels-title" hidden>
+        <button class="back-button" type="button" data-back="home" aria-label="Voltar ao início"></button>
+        <h2 class="scene-title" id="levels-title" tabindex="-1">Escolha a dificuldade</h2>
+        <div class="level-options">
+          <button class="level-button easy" type="button" data-level="easy">Fácil</button>
+          <button class="level-button medium" type="button" data-level="medium">Médio</button>
+          <button class="level-button hard" type="button" data-level="hard">Difícil</button>
+        </div>
+      </section>
+
+      <section class="screen challenge" id="challenge" aria-labelledby="challenge-title" hidden>
+        <button class="back-button" type="button" data-back="levels" aria-label="Voltar à dificuldade"></button>
+        <div class="panel">
+          <div class="round-header">
+            <h2 id="challenge-title" tabindex="-1"></h2>
+            <p id="round-number"></p>
+          </div>
+          <progress id="progress" value="0" aria-label="Palavras descobertas"></progress>
+          <p class="clue" id="clue"></p>
+          <div class="letter-row answer" id="answer" role="group" aria-label="Letras da resposta"></div>
+          <div class="bank-area">
+            <h3 id="bank-title">Letras disponíveis</h3>
+            <p id="bank-instructions">Algumas letras sobram.</p>
+            <div class="letter-row bank" id="bank" role="group" aria-labelledby="bank-title" aria-describedby="bank-instructions"></div>
+          </div>
+          <div class="hint-picture" id="hint-picture" role="img" hidden></div>
+          <p class="feedback" id="feedback" role="status"></p>
+          <div class="actions">
+            <button class="action-button secondary" id="hint" type="button" aria-controls="hint-picture" aria-expanded="false">Dica</button>
+            <button class="action-button secondary" id="erase" type="button" disabled>Apagar letra</button>
+            <button class="action-button secondary" id="clear" type="button" disabled>Limpar tudo</button>
+            <button class="action-button primary" id="verify" type="button">Verificar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen complete" id="complete" aria-labelledby="complete-title" hidden>
+        <button class="back-button" type="button" data-back="levels" aria-label="Voltar à dificuldade"></button>
+        <div class="panel">
+          <span class="completion-star" aria-hidden="true">★</span>
+          <h2 id="complete-title" tabindex="-1">Você conseguiu!</h2>
+          <p id="complete-message"></p>
+          <div class="actions">
+            <button class="action-button secondary" type="button" data-back="levels">Escolher dificuldade</button>
+            <button class="action-button primary" id="replay" type="button">Jogar novamente</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
